@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Railway Stations List</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Railway Stations List</h1>
+    <a class="btn btn-primary" th:href="@{/system/info/station/create}">Create New Station</a>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Region</th>
+            <th>Arrival Time</th>
+            <th>Departure Time</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="station : ${stations}">
+            <td th:text="${station.name}"></td>
+            <td th:text="${station.region}"></td>
+            <td th:text="${#temporals.format(station.arrivalTime, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${#temporals.format(station.departureTime, 'dd-MM-yyyy HH:mm')}"></td>
+            <td>
+                <a class="btn btn-info" th:href="@{/system/info/station/{id}(id=${station.id})}">View</a>
+                <a class="btn btn-warning" th:href="@{/system/info/station/update/{id}(id=${station.id})}">Edit</a>
+                <a class="btn btn-danger" th:href="@{/system/info/station/delete/{id}(id=${station.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="mt-3">
+        <a href="/system/info/station/queries" class="btn btn-dark">Return to Queries</a>
+        <a href="/system/info" class="btn btn-dark ml-2">Back to System Info</a>
+    </div>
+</div>
+</body>
+</html>

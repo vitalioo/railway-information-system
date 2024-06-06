@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule List</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Schedule List</h1>
+    <a class="btn btn-primary mb-3" th:href="@{/system/info/schedule/create}">Create New Schedule</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Train Type</th>
+            <th>Locomotive ID</th>
+            <th>Route ID</th>
+            <th>Tickets Returned</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="schedule : ${schedules}">
+            <td th:text="${schedule.trainType}"></td>
+            <td th:text="${schedule.locomotive.id}"></td>
+            <td th:text="${schedule.route.id}"></td>
+            <td th:text="${schedule.ticketsReturned}"></td>
+            <td>
+                <a class="btn btn-info btn-sm" th:href="@{/system/info/schedule/{id}(id=${schedule.id})}">View</a>
+                <a class="btn btn-warning btn-sm" th:href="@{/system/info/schedule/update/{id}(id=${schedule.id})}">Edit</a>
+                <a class="btn btn-danger btn-sm" th:href="@{/system/info/schedule/delete/{id}(id=${schedule.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="mt-3">
+        <a href="/system/info/schedule/queries" class="btn btn-dark">Return to Queries</a>
+        <a href="/system/info" class="btn btn-dark ml-2">Back to System Info</a>
+    </div>
+</div>
+</body>
+</html>

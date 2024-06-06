@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Station Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Station Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Station Queries</div>
+        <div class="card-body">
+
+<!--            &lt;!&ndash; Query by Name &ndash;&gt;-->
+<!--            <div class="mb-3">-->
+<!--                <p>This query retrieves stations by their name.</p>-->
+<!--                <form method="get" th:action="@{/system/info/station/name}">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="name">Station Name</label>-->
+<!--                        <input type="text" id="name" name="name" class="form-control" required>-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Count by Name &ndash;&gt;-->
+<!--            <div class="mb-3">-->
+<!--                <p>This query counts the stations by their name.</p>-->
+<!--                <form method="get" th:action="@{/system/info/station/count}">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="countName">Station Name</label>-->
+<!--                        <input type="text" id="countName" name="name" class="form-control" required>-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>-->
+<!--                </form>-->
+<!--            </div>-->
+
+            <!-- Query by Arrival and Departure Time -->
+            <div class="mb-3">
+                <p>This query retrieves routes by station ID and the specified arrival and departure times.</p>
+                <form method="get" th:action="@{/system/info/station/all-time}">
+                    <div class="form-group">
+                        <label for="id">Station ID</label>
+                        <select id="id" name="id" class="form-control" required>
+                            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="arrivalTime">Arrival Time</label>
+                        <input type="datetime-local" id="arrivalTime" name="arrivalTime" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="departureTime">Departure Time</label>
+                        <input type="datetime-local" id="departureTime" name="departureTime" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Arrival and Departure Time -->
+            <div class="mb-3">
+                <p>This query counts the routes by station ID and the specified arrival and departure times.</p>
+                <form method="get" th:action="@{/system/info/station/count/all-time}">
+                    <div class="form-group">
+                        <label for="countId">Station ID</label>
+                        <select id="countId" name="id" class="form-control" required>
+                            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="countArrivalTime">Arrival Time</label>
+                        <input type="datetime-local" id="countArrivalTime" name="arrivalTime" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countDepartureTime">Departure Time</label>
+                        <input type="datetime-local" id="countDepartureTime" name="departureTime" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Arrival Time -->
+            <div class="mb-3">
+                <p>This query retrieves routes by station ID and the specified arrival time.</p>
+                <form method="get" th:action="@{/system/info/station/time}">
+                    <div class="form-group">
+                        <label for="arrivalId">Station ID</label>
+                        <select id="arrivalId" name="id" class="form-control" required>
+                            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="arrivalOnlyTime">Arrival Time</label>
+                        <input type="datetime-local" id="arrivalOnlyTime" name="arrivalTime" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Arrival Time -->
+            <div class="mb-3">
+                <p>This query counts the routes by station ID and the specified arrival time.</p>
+                <form method="get" th:action="@{/system/info/station/count/time}">
+                    <div class="form-group">
+                        <label for="countArrivalId">Station ID</label>
+                        <select id="countArrivalId" name="id" class="form-control" required>
+                            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="countArrivalOnlyTime">Arrival Time</label>
+                        <input type="datetime-local" id="countArrivalOnlyTime" name="arrivalTime" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query Completed Routes by ID -->
+            <div class="mb-3">
+                <p>This query retrieves all completed routes by station ID.</p>
+                <form method="get" th:action="@{/system/info/station/completed}">
+                    <div class="form-group">
+                        <label for="completedId">Station ID</label>
+                        <select id="completedId" name="id" class="form-control" required>
+                            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count Completed Routes by ID -->
+            <div class="mb-3">
+                <p>This query counts all completed routes by station ID.</p>
+                <form method="get" th:action="@{/system/info/station/count/completed}">
+                    <div class="form-group">
+                        <label for="countCompletedId">Station ID</label>
+                        <select id="countCompletedId" name="id" class="form-control" required>
+                            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

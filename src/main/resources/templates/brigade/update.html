@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Brigade</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">Update Brigade</h1>
+    <form th:action="@{/system/info/brigade/update/{id}(id=${brigade.id})}" th:object="${brigade}" method="post">
+        <input type="hidden" name="_method" value="put"/>
+
+        <div class="form-group">
+            <label for="department">Department ID:</label>
+            <input type="number" id="department" th:field="*{department.id}" class="form-control" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <select id="type" th:field="*{type.id}" class="form-control">
+                <option th:each="type : ${brigadeTypes}" th:value="${type.id}" th:text="${type.type}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <a class="btn btn-secondary mt-4" href="/system/info/brigade/all">Back to List</a>
+</div>
+</body>
+</html>

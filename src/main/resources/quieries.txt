@@ -1,0 +1,523 @@
+
+/*                            1 запрос                            */
+
+/*количество pаботников железнодорожной станции*/
+select count(worker_id)
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+         join locomotive l on b.locomotive_id = l.locomotive_id
+         join locomotive_station ls on ls.locomotive_id = l.locomotive_id
+where ls.station_id = ?1;
+
+/*все pаботники железнодорожной станции*/
+select *
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+         join locomotive l on b.locomotive_id = l.locomotive_id
+         join railway_station rs on rs.railway_station_id = l.railway_station_id
+where rs.name = 'станция';
+
+/*начальники отдела*/
+select count(administrator_id)
+from department;
+
+/*начальники отдела*/
+select *
+from worker
+         join department d on worker.worker_id = d.administrator_id;
+
+/*работники указанного отдела*/
+select *
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+         join department d on d.id = b.department_id
+where d.name = 'отдел';
+
+/*работники указанного отдела*/
+select count(worker_id)
+from worker
+         join brigade b on b.brigade_id = worker.brigade_id
+         join department d on d.id = b.department_id
+where d.name = 'отдел';
+
+/*опыт работы на станции*/
+select count(worker_id)
+from worker
+where worker.work_experience >= 5;
+
+/*опыт работы на станции*/
+select *
+from worker
+where worker.work_experience >= 5;
+
+/*половой признак*/
+select *
+from worker
+where worker.gender = 'M';
+
+/*половой признак*/
+select count(worker_id)
+from worker
+where worker.gender = 'M';
+
+/*возраст работника*/
+select *
+from worker
+where worker.age >= 18;
+
+/*возраст работника*/
+select count(worker_id)
+from worker
+where worker.age >= 18;
+
+/*наличие детей*/
+select *
+from worker
+where worker.children_count > 0;
+
+/*наличие детей*/
+select count(worker_id)
+from worker
+where worker.children_count > 0;
+
+/*количество детей*/
+select count(worker_id)
+from worker
+where worker.children_count > 3;
+
+/*количество детей*/
+select *
+from worker
+where worker.children_count > 3;
+
+/*размер заработной платы*/
+select *
+from worker
+where worker.salary > 50000;
+
+/*размер заработной платы*/
+select count(worker_id)
+from worker
+where worker.salary > 50000;
+
+/*                            2 запрос                            */
+
+/*работники бригады*/
+select count(worker_id)
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+where b.brigade_id = 1;
+
+/*работники бригады*/
+select *
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+where b.brigade_id = 1;
+
+/*работники всех отделов*/
+select count(worker_id)
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+         join department d on d.id = b.department_id
+group by d.id;
+
+/*работники всех отделов*/
+select *
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+         join department d on d.id = b.department_id;
+
+
+/*обслуживающих некоторый локомотив*/
+select count(worker_id)
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+         join locomotive l on b.locomotive_id = l.locomotive_id
+where l.name = 'локомотив';
+
+/*обслуживающих некоторый локомотив*/
+select *
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+         join locomotive l on b.locomotive_id = l.locomotive_id
+where l.name = 'локомотив';
+/*по возрасту в бригаде*/
+select count(worker_id)
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+where b.brigade_id = 1
+  and worker.age >= 18;
+
+/*по возрасту в бригаде*/
+select *
+from worker
+         join brigade b on worker.brigade_id = b.brigade_id
+where b.brigade_id = 1
+  and worker.age >= 18;
+
+/*по средней зарплате в бригаде*/
+select count(worker_id), avg(worker.salary) as avg_salary
+from worker
+         join brigade b on b.brigade_id = worker.brigade_id
+where b.brigade_id = 1
+group by worker.salary
+having worker.salary > avg(worker.salary);
+/*todo*/
+
+
+/*                            3 запрос                            */
+/*прошедшие медосмотр*/
+select *
+from driver
+where driver.medical_examination >= '2022-01-01';
+
+/*прошедшие медосмотр*/
+select count(driver_id)
+from driver
+where driver.medical_examination >= '2022-01-01';
+
+/*непрошедшие медосмотр*/
+select *
+from driver
+where driver.medical_examination <= '2022-01-01';
+
+/*не медосмотр*/
+select count(driver_id)
+from driver
+where driver.medical_examination <= '2022-01-01';
+
+/*по половому признаку*/
+select *
+from driver
+         join worker w on w.worker_id = driver.driver_id
+where w.gender = 'F';
+
+/*по половому признаку*/
+select count(driver_id)
+from driver
+         join worker w on w.worker_id = driver.driver_id
+where w.gender = 'F';
+
+/*по возрасту водителей*/
+select *
+from driver
+         join worker w on w.worker_id = driver.driver_id
+where w.age >= 18;
+
+/*по возрасту водителей*/
+select count(driver_id)
+from driver
+         join worker w on w.worker_id = driver.driver_id
+where w.age >= 18;
+
+/*по размеру заработной платы водителей*/
+select *
+from driver
+         join worker w on w.worker_id = driver.driver_id
+where w.salary > 50000;
+
+/*по размеру заработной платы водителей*/
+select count(driver_id)
+from driver
+         join worker w on w.worker_id = driver.driver_id
+where w.salary > 50000;
+
+/*                            4 запрос                            */
+
+/*перечень локомотивов приписанных к железнодорожной станции*/
+select locomotive_id
+from railway_station
+where railway_station_id = 1;
+
+select count(locomotive_id)
+from railway_station
+where railway_station_id = 1;
+
+/*перечень локомотивов находящихся на станции в определенный момент времени*/
+select railway_station.locomotive_id
+from railway_station
+         join schedule s on s.locomotive_id = railway_station.locomotive_id
+where railway_station_id = 1
+  and (arrival_time <= '2022-01-01 00:00:00'
+    and departure_time >= '2022-01-01 00:00:00');
+
+/*перечень локомотивов находящихся на станции в определенный момент времени*/
+select count(railway_station.locomotive_id)
+from railway_station
+         join schedule s on s.locomotive_id = railway_station.locomotive_id
+where railway_station_id = 1
+  and (arrival_time <= '2022-01-01 00:00:00'
+    and departure_time >= '2022-01-01 00:00:00');
+
+/*по времени прибытия на станцию*/
+select railway_station_id
+from railway_station
+where railway_station_id = 1
+  and arrival_time = '2022-01-01 00:00:00';
+
+/*по времени прибытия на станцию*/
+select railway_station_id
+from railway_station
+where railway_station_id = 1
+  and arrival_time = '2022-01-01 00:00:00';
+
+/*количество совершенных маршрутов у локомотива*/
+
+
+/*                            5 запрос                            */
+
+/*перечень и общее число локомотивов, пpошедших плановый техосмотp за определенный пеpиод вpемени*/
+select locomotive_id
+from maintenance
+where maintenance_date between '2022-01-01' and '2022-02-01';
+
+/*перечень и общее число локомотивов, пpошедших плановый техосмотp за определенный пеpиод вpемени*/
+select count(locomotive_id)
+from maintenance
+where maintenance_date between '2022-01-01' and '2022-02-01';
+
+/*todo*/
+/*отправленные локомотивы в ремонт в обозначенное время*/
+/*отправленные локомотивы в ремонт в обозначенное время*/
+
+/*pемонтиpованных указанное число pаз*/
+select count(maintenance_id)
+from maintenance
+group by locomotive_id
+having count(maintenance_id) = 3;
+
+/*pемонтиpованных указанное число pаз*/
+select locomotive_id
+from maintenance
+group by maintenance_id
+having count(locomotive_id) = 3;
+
+/*todo*/
+/*по количеству совершенных маршрутов до ремонта*/
+-- select count(locomotive_id)
+
+/*перечень по возрасту локомотива*/
+select locomotive_id, (current_date - locomotive.manufacture_date) / 365 as age_years
+from locomotive
+order by age_years;
+
+/*                            6 запрос                            */
+/*поезда на указанном маршруте*/
+select locomotive_id
+from schedule
+         join route r on schedule.route_id = r.route_id
+where initial_destination = 'Moscow'
+  and final_destination = 'Kazan';
+
+/*поезда на указанном маршруте*/
+select count(locomotive_id)
+from schedule
+         join route r on schedule.route_id = r.route_id
+where initial_destination = 'Moscow'
+  and final_destination = 'Kazan';
+
+/*по длительности маршрута*/
+select locomotive_id
+from schedule
+         join route r on schedule.route_id = r.route_id
+where initial_destination = 'Moscow'
+  and final_destination = 'Kazan'
+  and r.duration = '00:01:00';
+
+/*по длительности маршрута*/
+select count(locomotive_id)
+from schedule
+         join route r on schedule.route_id = r.route_id
+where initial_destination = 'Moscow'
+  and final_destination = 'Kazan'
+  and r.duration = '00:01:00';
+
+/*по цене билета*/
+select locomotive_id
+from schedule
+         join route r on schedule.route_id = r.route_id
+         join ticket t on r.route_id = t.route_id
+where initial_destination = 'Moscow'
+  and final_destination = 'Kazan'
+  and ticket_price = 1000;
+
+/*по цене билета*/
+select count(locomotive_id)
+from schedule
+         join route r on schedule.route_id = r.route_id
+         join ticket t on r.route_id = t.route_id
+where initial_destination = 'Moscow'
+  and final_destination = 'Kazan'
+  and ticket_price = 1000;
+
+/*по цене билета и длительности маршрута*/
+
+select locomotive_id
+from schedule
+         join route r on schedule.route_id = r.route_id
+         join ticket t on r.route_id = t.route_id
+where initial_destination = 'Moscow'
+  and final_destination = 'Kazan'
+  and ticket_price = 1000
+  and r.duration = '00:01:00';
+
+/*                            7 запрос                            */
+
+/*отменённые рейсы полностью*/
+select route_id, initial_destination, final_destination
+from route
+where canceled = true;
+
+/*количество отменённых рейсов полностью*/
+select count(route_id)
+from route
+where canceled = true;
+
+/*отменённые рейсы в указанном направлении*/
+select route_id
+from route
+where canceled = true
+  and final_destination = 'Kazan';
+
+/*количество отменённых рейсов в указанном направлении*/
+select count(route_id)
+from route
+where canceled = true
+  and final_destination = 'Kazan';
+
+/*отменённые рейсы по указанному маршруту*/
+select route_id
+from route
+where canceled = true
+  and initial_destination = 'Moscow'
+  and final_destination = 'Kazan';
+
+/*отменённые рейсы по указанному маршруту*/
+select count(route_id)
+from route
+where canceled = true
+  and initial_destination = 'Moscow'
+  and final_destination = 'Kazan';
+
+/*                            8 запрос                            */
+
+/*задержанные рейсы по причине*/
+select initial_destination, final_destination, locomotive_id
+from route
+         join schedule s on route.route_id = s.route_id
+         join delay_reason d on s.delay_reason_id = d.delay_reason_id
+where d.reason = 'Задержка';
+
+/*задержанные рейсы по причине*/
+select count(route.route_id)
+from route
+         join schedule s on route.route_id = s.route_id
+         join delay_reason d on s.delay_reason_id = d.delay_reason_id
+where d.reason = 'Задержка';
+
+/*по указанному маршруту*/
+select initial_destination, final_destination, locomotive_id
+from route
+         join schedule s on route.route_id = s.route_id
+         join delay_reason d on s.delay_reason_id = d.delay_reason_id
+where d.reason is not null;
+
+/*по указанному маршруту*/
+select count(s.route_id)
+from route
+         join schedule s on route.route_id = s.route_id
+         join delay_reason d on s.delay_reason_id = d.delay_reason_id
+where d.reason is not null;
+
+/*количество сданных билетов*/
+select count(tickets_returned)
+from schedule
+where route_id = '2';
+
+/*                            9 запрос                            */
+
+/*пpоданные билеты за указанный интервал времени на опpеделенные маpшpуты*/
+select ticket_id, initial_destination, final_destination
+from ticket
+         join route r on ticket.route_id = r.route_id
+where sale_date between '2022-01-01' and '2022-01-31';
+
+/*по длительности маршрута*/
+select ticket_id, initial_destination, final_destination
+from ticket
+         join route r on ticket.route_id = r.route_id
+where sale_date is not null
+  and r.duration = '00:01:00';
+
+/*по цене билета*/
+select ticket_id, initial_destination, final_destination
+from ticket
+         join route r on ticket.route_id = r.route_id
+where ticket_price = 1000;
+
+/*                            10 запрос                            */
+/*по категории*/
+select route_id, initial_destination, final_destination
+from route
+where route_type = 'Внутренние';
+
+/*по категории*/
+select count(route_id)
+from route
+where route_type = 'Внутренние';
+
+/*следующих в определенном напpавлении*/
+select route_id, initial_destination, final_destination
+from route
+where final_destination = 'Kazan';
+
+/*следующих в определенном напpавлении*/
+select count(route_id)
+from route
+where final_destination = 'Kazan';
+
+/*                            11 запрос                            */
+
+/*перечень пассажиров на указанном рейсе*/
+select first_name, last_name
+from passenger_details
+         join ticket t on passenger_details.passenger_id = t.passenger_id
+         join route r on t.route_id = r.route_id
+where r.route_id = '2'
+  and sale_date is not null;
+
+/*число пассажиров на указанном рейсе*/
+select count(passenger_details.passenger_id)
+from passenger_details
+         join ticket t on passenger_details.passenger_id = t.passenger_id
+         join route r on t.route_id = r.route_id
+where r.route_id = '2'
+  and sale_date is not null;
+
+/*todo уехавших в указанный день, уехавших за гpаницу в указанный день, по пpизнаку сдачи вещей в багажное отделение, по половому пpизнаку, по возpасту.*/
+
+/*                            12 запрос                            */
+
+/*невыкупленные билеты на указанный рейс*/
+select ticket_id, initial_destination, final_destination
+from ticket
+         join route r on ticket.route_id = r.route_id
+where r.route_id = '1'
+  and sale_date is null;
+
+/*количество невыкупленных билетов на указанном рейсе*/
+select count(ticket_id)
+from ticket
+where route_id = '1'
+  and sale_date is null;
+
+/*todo на указанный день, некоторый маpшpут.*/
+
+/*                            13 запрос                            */
+
+/*общее число сданных билетов на указанный рейс*/
+select count(tickets_returned)
+from schedule
+where route_id = '2';
+
+/*todo число сданных билетов на указанный день, маpшpут.*/

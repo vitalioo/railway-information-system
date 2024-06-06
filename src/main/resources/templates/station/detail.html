@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Station Detail</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Station Detail</h1>
+    <div class="detail">
+        <p><strong>Name:</strong> <span th:text="${station.name}"></span></p>
+        <p><strong>Region:</strong> <span th:text="${station.region}"></span></p>
+        <p><strong>Arrival Time:</strong> <span th:text="${#temporals.format(station.arrivalTime, 'dd-MM-yyyy HH:mm')}"></span></p>
+        <p><strong>Departure Time:</strong> <span th:text="${#temporals.format(station.arrivalTime, 'dd-MM-yyyy HH:mm')}"></span></p>
+    </div>
+    <a class="btn btn-secondary" href="/system/info/station/all">Back to List</a>
+</div>
+</body>
+</html>

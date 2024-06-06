@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Ticket Details</h1>
+    <div class="form-group">
+        <label for="route">Route</label>
+        <input type="text" id="route" th:value="${ticket.route.id}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label for="saleDate">Sale Date</label>
+        <input type="text" id="saleDate" th:value="${#temporals.format(ticket.saleDate, 'yyyy-MM-dd HH:mm')}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label for="ticketPrice">Ticket Price</label>
+        <input type="number" id="ticketPrice" th:value="${ticket.ticketPrice}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label for="passenger">Passenger</label>
+        <input type="text" id="passenger" th:value="${ticket.passenger.firstName + ' ' + ticket.passenger.lastName}" class="form-control" readonly>
+    </div>
+    <div class="form-actions">
+        <a class="btn btn-secondary" th:href="@{/system/info/ticket/all}">Back to List</a>
+    </div>
+</div>
+</body>
+</html>

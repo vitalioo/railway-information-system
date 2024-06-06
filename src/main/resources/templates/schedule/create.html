@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Schedule</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Create Schedule</h1>
+    <a class="btn btn-secondary mb-3" th:href="@{/system/info/schedule/all}">Back to List</a>
+    <form th:action="@{/system/info/schedule}" th:object="${schedule}" method="post">
+        <div class="form-group">
+            <label for="trainType">Train Type</label>
+            <input type="text" class="form-control" id="trainType" th:field="*{trainType}" placeholder="Enter Train Type">
+        </div>
+        <div class="form-group">
+            <label for="locomotiveId">Locomotive ID</label>
+            <input type="number" class="form-control" id="locomotiveId" th:field="*{locomotive.id}" placeholder="Enter Locomotive ID">
+        </div>
+        <div class="form-group">
+            <label for="routeId">Route ID</label>
+            <input type="number" class="form-control" id="routeId" th:field="*{route.id}" placeholder="Enter Route ID">
+        </div>
+        <div class="form-group">
+            <label for="ticketsReturned">Tickets Returned</label>
+            <input type="number" class="form-control" id="ticketsReturned" th:field="*{ticketsReturned}" placeholder="Enter Tickets Returned">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Drivers by Salary</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Drivers by Salary</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Medical Examination</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="driver : ${drivers}">
+            <td th:text="${driver.worker.firstName + ' ' + driver.worker.lastName}"></td>
+            <td th:text="${driver.worker.gender}"></td>
+            <td th:text="${driver.licenseNumber}"></td>
+            <td th:text="${driver.medicalExamination}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

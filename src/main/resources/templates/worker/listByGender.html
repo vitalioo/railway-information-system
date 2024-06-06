@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Workers by Gender</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Workers by Gender</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Work Experience</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Children Count</th>
+            <th>Salary</th>
+            <th>Brigade ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="worker : ${workers}">
+            <td th:text="${worker.id}">1</td>
+            <td th:text="${worker.firstName}">John</td>
+            <td th:text="${worker.lastName}">Doe</td>
+            <td th:text="${worker.workExperience}">10</td>
+            <td th:text="${worker.gender}">M</td>
+            <td th:text="${worker.age}">35</td>
+            <td th:text="${worker.childrenCount}">2</td>
+            <td th:text="${worker.salary}">50000</td>
+            <td th:text="${worker.brigade.id}">1</td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-secondary" th:href="@{/system/info/worker/all}">Back to List</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Route Detail</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Route Detail</h1>
+    <div th:if="${route}">
+        <p><strong>ID:</strong> <span th:text="${route.id}"></span></p>
+        <p><strong>Route Type:</strong> <span th:text="${route.routeType}"></span></p>
+        <p><strong>Duration (Seconds):</strong> <span th:text="${route.durationSeconds}"></span></p>
+        <p><strong>Initial Destination:</strong> <span th:text="${route.initialDestination}"></span></p>
+        <p><strong>Final Destination:</strong> <span th:text="${route.finalDestination}"></span></p>
+        <p><strong>Canceled:</strong> <span th:text="${route.canceled} ? 'Yes' : 'No'"></span></p>
+    </div>
+    <a href="/system/info/route/all" class="btn btn-secondary mt-3">Back to List</a>
+</div>
+</body>
+</html>

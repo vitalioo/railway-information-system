@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrators List</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Administrators List</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Work Experience</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Children Count</th>
+            <th>Salary</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="worker : ${administrators}">
+            <td th:text="${worker.firstName}"></td>
+            <td th:text="${worker.lastName}"></td>
+            <td th:text="${worker.workExperience}"></td>
+            <td th:text="${worker.gender}"></td>
+            <td th:text="${worker.age}"></td>
+            <td th:text="${worker.childrenCount}"></td>
+            <td th:text="${worker.salary}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-secondary mt-3" th:href="@{/system/info/department/all}">Back to List</a>
+</div>
+</body>
+</html>

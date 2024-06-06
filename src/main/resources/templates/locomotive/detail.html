@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Locomotive Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Locomotive Details</h1>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" th:value="${locomotive.name}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label for="manufactureDate">Manufacture Date</label>
+        <input type="text" id="manufactureDate" th:value="${#temporals.format(locomotive.manufactureDate, 'yyyy-MM-dd')}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label for="ticketsCount">Tickets Count</label>
+        <input type="number" id="ticketsCount" th:value="${locomotive.ticketsCount}" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+        <label for="brigade">Brigade</label>
+        <input type="text" id="brigade" th:value="${locomotive.brigade.id}" class="form-control" readonly>
+    </div>
+    <div class="form-actions">
+        <a class="btn btn-secondary" th:href="@{/system/info/locomotive/all}">Back to List</a>
+    </div>
+</div>
+</body>
+</html>

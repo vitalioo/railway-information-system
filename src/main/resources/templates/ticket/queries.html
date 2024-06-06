@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="my-4 text-center">Ticket Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Ticket Queries</div>
+        <div class="card-body">
+
+            <!-- Query by Sale Date and Destination -->
+            <div class="mb-3">
+                <p>This query retrieves tickets by sale date and destination.</p>
+                <form method="get" th:action="@{/system/info/ticket/date/destination}">
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="datetime-local" id="startDate" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="datetime-local" id="endDate" name="endDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="initialDestination">Initial Destination</label>
+                        <select id="initialDestination" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="finalDestination">Final Destination</label>
+                        <select id="finalDestination" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Sale Date and Destination -->
+            <div class="mb-3">
+                <p>This query counts tickets by sale date and destination.</p>
+                <form method="get" th:action="@{/system/info/ticket/count/date/destination}">
+                    <div class="form-group">
+                        <label for="countStartDate">Start Date</label>
+                        <input type="datetime-local" id="countStartDate" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countEndDate">End Date</label>
+                        <input type="datetime-local" id="countEndDate" name="endDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countInitialDestination">Initial Destination</label>
+                        <select id="countInitialDestination" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="countFinalDestination">Final Destination</label>
+                        <select id="countFinalDestination" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Duration and Destination -->
+            <div class="mb-3">
+                <p>This query retrieves tickets by duration and destination.</p>
+                <form method="get" th:action="@{/system/info/ticket/duration/destination}">
+                    <div class="form-group">
+                        <label for="duration">Duration (in hours)</label>
+                        <input type="number" id="duration" name="duration" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="initialDestinationDuration">Initial Destination</label>
+                        <select id="initialDestinationDuration" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="finalDestinationDuration">Final Destination</label>
+                        <select id="finalDestinationDuration" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Duration and Destination -->
+            <div class="mb-3">
+                <p>This query counts tickets by duration and destination.</p>
+                <form method="get" th:action="@{/system/info/ticket/count/duration/destination}">
+                    <div class="form-group">
+                        <label for="countDuration">Duration (in hours)</label>
+                        <input type="number" id="countDuration" name="duration" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countInitialDestinationDuration">Initial Destination</label>
+                        <select id="countInitialDestinationDuration" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="countFinalDestinationDuration">Final Destination</label>
+                        <select id="countFinalDestinationDuration" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Ticket Price and Destination -->
+            <div class="mb-3">
+                <p>This query retrieves tickets by price and destination.</p>
+                <form method="get" th:action="@{/system/info/ticket/price/destination}">
+                    <div class="form-group">
+                        <label for="price">Ticket Price</label>
+                        <input type="number" id="price" name="price" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="initialDestinationPrice">Initial Destination</label>
+                        <select id="initialDestinationPrice" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="finalDestinationPrice">Final Destination</label>
+                        <select id="finalDestinationPrice" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Ticket Price and Destination -->
+            <div class="mb-3">
+                <p>This query counts tickets by price and destination.</p>
+                <form method="get" th:action="@{/system/info/ticket/count/price/destination}">
+                    <div class="form-group">
+                        <label for="countPrice">Ticket Price</label>
+                        <input type="number" id="countPrice" name="price" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countInitialDestinationPrice">Initial Destination</label>
+                        <select id="countInitialDestinationPrice" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="countFinalDestinationPrice">Final Destination</label>
+                        <select id="countFinalDestinationPrice" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

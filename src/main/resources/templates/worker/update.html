@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Worker</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Update Worker</h1>
+    <form th:action="@{/system/info/worker/update/{id}(id=${worker.id})}" th:object="${worker}" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required/>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="brigade">Brigade ID:</label>
+                <input type="number" class="form-control" id="brigade" th:field="*{brigade.id}" required/>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="workExperience">Work Experience:</label>
+                <input type="number" class="form-control" id="workExperience" th:field="*{workExperience}" required/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="gender">Gender:</label>
+                <input type="text" class="form-control" id="gender" th:field="*{gender}" maxlength="1" required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" id="age" th:field="*{age}" required/>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="childrenCount">Children Count:</label>
+                <input type="number" class="form-control" id="childrenCount" th:field="*{childrenCount}" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="salary">Salary:</label>
+            <input type="number" class="form-control" id="salary" th:field="*{salary}" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a class="btn btn-secondary ml-2" th:href="@{/system/info/worker/all}">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Locomotive Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Locomotive Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Locomotive Queries</div>
+        <div class="card-body">
+            <!-- Find Locomotives by Route -->
+            <form method="get" th:action="@{/system/info/locomotive/find/route}">
+                <div class="form-group">
+                    <label for="initialDestination">Initial Destination</label>
+                    <select id="initialDestination" name="initialDestination" class="form-control" required>
+                        <option th:each="destination : ${initialDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <label for="finalDestination" class="mt-2">Final Destination</label>
+                    <select id="finalDestination" name="finalDestination" class="form-control" required>
+                        <option th:each="destination : ${finalDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count Locomotives by Route -->
+            <form method="get" th:action="@{/system/info/locomotive/count/route}">
+                <div class="form-group">
+                    <label for="countInitialDestination">Initial Destination</label>
+                    <select id="countInitialDestination" name="initialDestination" class="form-control" required>
+                        <option th:each="destination : ${initialDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <label for="countFinalDestination" class="mt-2">Final Destination</label>
+                    <select id="countFinalDestination" name="finalDestination" class="form-control" required>
+                        <option th:each="destination : ${finalDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find Locomotives by Duration -->
+            <form method="get" th:action="@{/system/info/locomotive/find/duration}">
+                <div class="form-group">
+                    <label for="duration">Duration (in seconds)</label>
+                    <input type="number" id="duration" name="duration" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count Locomotives by Duration -->
+            <form method="get" th:action="@{/system/info/locomotive/count/duration}">
+                <div class="form-group">
+                    <label for="countDuration">Duration (in seconds)</label>
+                    <input type="number" id="countDuration" name="duration" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find Locomotives by Ticket Price -->
+            <form method="get" th:action="@{/system/info/locomotive/find/ticketPrice}">
+                <div class="form-group">
+                    <label for="ticketPrice">Ticket Price</label>
+                    <input type="number" id="ticketPrice" name="ticketPrice" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count Locomotives by Ticket Price -->
+            <form method="get" th:action="@{/system/info/locomotive/count/ticketPrice}">
+                <div class="form-group">
+                    <label for="countTicketPrice">Ticket Price</label>
+                    <input type="number" id="countTicketPrice" name="ticketPrice" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find Locomotives by Ticket Price and Route -->
+            <form method="get" th:action="@{/system/info/locomotive/find/ticket-route}">
+                <div class="form-group">
+                    <label for="ticketRoutePrice">Ticket Price</label>
+                    <input type="number" id="ticketRoutePrice" name="ticketPrice" class="form-control" required>
+                    <label for="routeInitialDestination" class="mt-2">Initial Destination</label>
+                    <select id="routeInitialDestination" name="initialDestination" class="form-control" required>
+                        <option th:each="destination : ${initialDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <label for="routeFinalDestination" class="mt-2">Final Destination</label>
+                    <select id="routeFinalDestination" name="finalDestination" class="form-control" required>
+                        <option th:each="destination : ${finalDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <label for="routeDuration" class="mt-2">Duration (in seconds)</label>
+                    <input type="number" id="routeDuration" name="duration" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count Locomotives by Ticket Price and Route -->
+            <form method="get" th:action="@{/system/info/locomotive/count/ticket-route}">
+                <div class="form-group">
+                    <label for="countTicketRoutePrice">Ticket Price</label>
+                    <input type="number" id="countTicketRoutePrice" name="ticketPrice" class="form-control" required>
+                    <label for="countRouteInitialDestination" class="mt-2">Initial Destination</label>
+                    <select id="countRouteInitialDestination" name="initialDestination" class="form-control" required>
+                        <option th:each="destination : ${initialDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <label for="countRouteFinalDestination" class="mt-2">Final Destination</label>
+                    <select id="countRouteFinalDestination" name="finalDestination" class="form-control" required>
+                        <option th:each="destination : ${finalDestinations}"
+                                th:value="${destination}" th:text="${destination}"></option>
+                    </select>
+                    <label for="countRouteDuration" class="mt-2">Duration (in seconds)</label>
+                    <input type="number" id="countRouteDuration" name="duration" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find Locomotives by Repairs Count -->
+            <form method="get" th:action="@{/system/info/locomotive/find/repairs}">
+                <div class="form-group">
+                    <label for="repairsCount">Repairs Count</label>
+                    <input type="number" id="repairsCount" name="repairsCount" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count Locomotives by Repairs Count -->
+            <form method="get" th:action="@{/system/info/locomotive/count/repairs}">
+                <div class="form-group">
+                    <label for="countRepairsCount">Repairs Count</label>
+                    <input type="number" id="countRepairsCount" name="repairsCount" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

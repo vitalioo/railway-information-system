@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Details</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Schedule Details</h1>
+    <a class="btn btn-secondary mb-3" th:href="@{/system/info/schedule/all}">Back to List</a>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Schedule ID: <span th:text="${schedule.id}"></span></h5>
+            <p class="card-text">Train Type: <span th:text="${schedule.trainType}"></span></p>
+            <p class="card-text">Locomotive ID: <span th:text="${schedule.locomotive.id}"></span></p>
+            <p class="card-text">Route ID: <span th:text="${schedule.route.id}"></span></p>
+            <p class="card-text">Tickets Returned: <span th:text="${schedule.ticketsReturned}"></span></p>
+            <p class="card-text">Delay Reasons:
+            <ul>
+                <li th:each="reason : ${schedule.delayReason}" th:text="${reason.reason}"></li>
+            </ul>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Ticket</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Update Ticket</h1>
+    <form th:action="@{/system/info/ticket/update/{id}(id=${ticket.id})}" th:object="${ticket}" method="post">
+        <div class="form-group">
+            <label for="route">Route</label>
+            <select id="route" th:field="*{route.id}" class="form-control" required>
+                <option th:each="route : ${routes}" th:value="${route.id}" th:text="${route.id}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="saleDate">Sale Date</label>
+            <input type="text" id="saleDate" th:field="*{saleDate}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="ticketPrice">Ticket Price</label>
+            <input type="number" id="ticketPrice" th:field="*{ticketPrice}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="passenger">Passenger</label>
+            <select id="passenger" th:field="*{passenger.id}" class="form-control" required>
+                <option th:each="passenger : ${passengers}" th:value="${passenger.id}" th:text="${passenger.firstName + ' ' + passenger.lastName}"></option>
+            </select>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-secondary" th:href="@{/system/info/ticket/all}">Cancel</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

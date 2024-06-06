@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Department Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Department Queries</div>
+        <div class="card-body">
+            <!-- Administrator Query -->
+            <form method="get" th:action="@{/system/info/department/administrators}">
+                <div class="form-group">
+                    <label for="administrator">Administrators</label>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count of Administrators Query -->
+            <form method="get" th:action="@{/system/info/department/count}">
+                <div class="form-group">
+                    <label for="countAdministrators">Count of Administrators</label>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

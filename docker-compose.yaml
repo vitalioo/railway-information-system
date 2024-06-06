@@ -1,0 +1,20 @@
+version: "7.0"
+services:
+    postgres:
+        image: postgres
+        container_name: railway-system-db
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./postgres_data:/var/lib/postgresql/data
+        env_file:
+            - ./src/main/resources/env/db-config.env
+#    (in future) keycloak:
+#        image: quay.io/keycloak/keycloak:latest
+#        container_name: railway-system-keycloak
+#        ports:
+#            - "8092:8092"
+#        volumes:
+#            - ./keycloak_data:/opt/keycloak/data
+#        env_file:
+#            - ./src/main/resources/env/keycloak-config.env

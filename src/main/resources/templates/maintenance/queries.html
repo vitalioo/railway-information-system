@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Maintenance Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Maintenance Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Maintenance Queries</div>
+        <div class="card-body">
+            <!-- Query by Date Range -->
+            <div class="mb-3">
+                <p>This query retrieves maintenance records within a specified date range.</p>
+                <form method="get" th:action="@{/system/info/maintenance/date}">
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="datetime-local" id="startDate" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="datetime-local" id="endDate" name="endDate" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Date Range -->
+            <div class="mb-3">
+                <p>This query counts the maintenance records within a specified date range.</p>
+                <form method="get" th:action="@{/system/info/maintenance/count/date}">
+                    <div class="form-group">
+                        <label for="countStartDate">Start Date</label>
+                        <input type="datetime-local" id="countStartDate" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countEndDate">End Date</label>
+                        <input type="datetime-local" id="countEndDate" name="endDate" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Sent for Repair by Date Range -->
+            <div class="mb-3">
+                <p>This query retrieves records of maintenance items sent for repair within a specified date range.</p>
+                <form method="get" th:action="@{/system/info/maintenance/date/repaired}">
+                    <div class="form-group">
+                        <label for="repairStartDate">Start Date</label>
+                        <input type="datetime-local" id="repairStartDate" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="repairEndDate">End Date</label>
+                        <input type="datetime-local" id="repairEndDate" name="endDate" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count Sent for Repair by Date Range -->
+            <div class="mb-3">
+                <p>This query counts the records of maintenance items sent for repair within a specified date range.</p>
+                <form method="get" th:action="@{/system/info/maintenance/count/date/repaired}">
+                    <div class="form-group">
+                        <label for="countRepairStartDate">Start Date</label>
+                        <input type="datetime-local" id="countRepairStartDate" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="countRepairEndDate">End Date</label>
+                        <input type="datetime-local" id="countRepairEndDate" name="endDate" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Repair Count -->
+            <div class="mb-3">
+                <p>This query retrieves maintenance records with a specific number of repairs.</p>
+                <form method="get" th:action="@{/system/info/maintenance/repair}">
+                    <div class="form-group">
+                        <label for="repairCount">Repair Count</label>
+                        <input type="number" id="repairCount" name="count" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Repair Count -->
+            <div class="mb-3">
+                <p>This query counts the maintenance records with a specific number of repairs.</p>
+                <form method="get" th:action="@{/system/info/maintenance/count/repair}">
+                    <div class="form-group">
+                        <label for="countRepairCount">Repair Count</label>
+                        <input type="number" id="countRepairCount" name="count" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

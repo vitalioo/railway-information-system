@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Count of Passengers by Age and Route</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Count of Passengers by Age and Route</h1>
+    <p>Total number of passengers: <span th:text="${count}"></span></p>
+    <a class="btn btn-secondary" href="/system/info/passenger/queries">Back</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Workers with Children</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Workers with Children</h1>
+    <div th:if="${workers.size() == 0}">
+        <p>No workers found with children. <a th:href="@{/system/info/worker/all}" class="btn btn-primary">Back to all workers</a></p>
+    </div>
+    <div th:if="${workers.size() > 0}">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Work Experience</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Children count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="worker : ${workers}">
+                <td th:text="${worker.firstName}"></td>
+                <td th:text="${worker.lastName}"></td>
+                <td th:text="${worker.workExperience}"></td>
+                <td th:text="${worker.gender}"></td>
+                <td th:text="${worker.age}"></td>
+                <td th:text="${worker.salary}"></td>
+                <td th:text="${worker.childrenCount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

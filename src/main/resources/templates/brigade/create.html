@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Brigade</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4">Create Brigade</h1>
+    <form th:action="@{/system/info/brigade}" th:object="${brigade}" method="post">
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select id="department" th:field="*{department.id}" class="form-control" required>
+                <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.name}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <select id="type" th:field="*{type.id}" class="form-control">
+                <option th:each="type : ${brigadeTypes}" th:value="${type.id}" th:text="${type.type}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="workers">Workers:</label>
+            <div id="workers-container">
+                <select name="workers" class="form-control worker-select" required>
+                    <option th:each="worker : ${workers}" th:value="${worker.id}" th:text="${worker.firstName + ' ' + worker.lastName}"></option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-secondary mt-2" id="add-worker">Add Worker</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <a class="btn btn-secondary mt-4" href="/system/info/brigade/all">Back to List</a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#add-worker').click(function() {
+            var workerSelect = $('.worker-select:first').clone();
+            workerSelect.val('');
+            $('#workers-container').append(workerSelect);
+        });
+    });
+</script>
+
+</body>
+</html>

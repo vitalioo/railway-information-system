@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Worker Detail</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Worker Detail</h1>
+    <div class="card">
+        <div class="card-body">
+            <div th:if="${worker}">
+                <p><strong>First Name:</strong> <span th:text="${worker.firstName}"></span></p>
+                <p><strong>Last Name:</strong> <span th:text="${worker.lastName}"></span></p>
+                <p><strong>Work Experience:</strong> <span th:text="${worker.workExperience}"></span></p>
+                <p><strong>Gender:</strong> <span th:text="${worker.gender}"></span></p>
+                <p><strong>Age:</strong> <span th:text="${worker.age}"></span></p>
+                <p><strong>Children Count:</strong> <span th:text="${worker.childrenCount}"></span></p>
+                <p><strong>Salary:</strong> <span th:text="${worker.salary}"></span></p>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-secondary mt-3" th:href="@{/system/info/worker/all}">Back to List</a>
+</div>
+</body>
+</html>

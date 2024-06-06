@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Detail</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Driver Detail</h1>
+    <div th:if="${driver}">
+        <p><strong>License Number:</strong> <span th:text="${driver.licenseNumber}"></span></p>
+        <p><strong>Medical Examination:</strong> <span th:text="${driver.medicalExamination}"></span></p>
+        <p><strong>Worker ID:</strong> <span th:text="${driver.worker.id}"></span></p>
+    </div>
+    <a href="/system/info/driver/all" class="btn btn-secondary">Back to List</a>
+</div>
+</body>
+</html>

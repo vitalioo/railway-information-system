@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Maintenance Detail</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Maintenance Detail</h1>
+    <div th:if="${maintenance}">
+        <p>Locomotive: <span th:text="${maintenance.locomotive.id}"></span></p>
+        <p>Date: <span th:text="${#temporals.format(maintenance.maintenanceDate, 'yyyy-MM-dd HH:mm')}"></span></p>
+        <p>Type: <span th:text="${maintenance.maintenanceType}"></span></p>
+    </div>
+    <a href="/system/info/maintenance/all" class="btn btn-secondary mt-3">Back to List</a>
+</div>
+</body>
+</html>

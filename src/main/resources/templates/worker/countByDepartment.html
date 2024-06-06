@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Worker Count by Department</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Worker Count by Department</h1>
+    <p>Total number of workers: <span th:text="${count}">0</span></p>
+    <a class="btn btn-secondary" th:href="@{/system/info/worker/all}">Back to List</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Count Locomotives by Ticket Price and Route</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Count Locomotives by Ticket Price and Route</h1>
+    <p>Total locomotives for this ticket price and route: <span th:text="${count}"></span></p>
+    <a href="/system/info/locomotive/all" class="btn btn-secondary">Back to List</a>
+</div>
+</body>
+</html>

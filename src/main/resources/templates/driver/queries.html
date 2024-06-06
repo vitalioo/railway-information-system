@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Driver Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Driver Queries</div>
+        <div class="card-body">
+            <!-- Medical Examination Passed Query -->
+            <form method="get" th:action="@{/system/info/driver/med-exam/passed}">
+                <div class="form-group">
+                    <label for="medPassed">Medical Examination Passed</label>
+                    <input type="number" id="medPassed" name="medicalExamination" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count of Drivers Who Passed Medical Examination Query -->
+            <form method="get" th:action="@{/system/info/driver/count/med-exam/passed}">
+                <div class="form-group">
+                    <label for="countMedPassed">Count of Drivers Who Passed Medical Examination</label>
+                    <input type="number" id="countMedPassed" name="medicalExamination" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Medical Examination Failed Query -->
+            <form method="get" th:action="@{/system/info/driver/medexam/failed}">
+                <div class="form-group">
+                    <label for="medFailed">Medical Examination Failed</label>
+                    <input type="number" id="medFailed" name="medicalExamination" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count of Drivers Who Failed Medical Examination Query -->
+            <form method="get" th:action="@{/system/info/driver/count/med-exam/failed}">
+                <div class="form-group">
+                    <label for="countMedFailed">Count of Drivers Who Failed Medical Examination</label>
+                    <input type="number" id="countMedFailed" name="medicalExamination" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Gender Query -->
+            <form method="get" th:action="@{/system/info/driver/gender}">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" class="form-control" required>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count of Drivers by Gender Query -->
+            <form method="get" th:action="@{/system/info/driver/count/gender}">
+                <div class="form-group">
+                    <label for="countGender">Count of Drivers by Gender</label>
+                    <select id="countGender" name="gender" class="form-control" required>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Age Query -->
+            <form method="get" th:action="@{/system/info/driver/age}">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count of Drivers by Age Query -->
+            <form method="get" th:action="@{/system/info/driver/count/age}">
+                <div class="form-group">
+                    <label for="countAge">Count of Drivers by Age</label>
+                    <input type="number" id="countAge" name="age" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Salary Query -->
+            <form method="get" th:action="@{/system/info/driver/salary}">
+                <div class="form-group">
+                    <label for="salary">Salary</label>
+                    <input type="number" id="salary" name="salary" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count of Drivers by Salary Query -->
+            <form method="get" th:action="@{/system/info/driver/count/salary}">
+                <div class="form-group">
+                    <label for="countSalary">Count of Drivers by Salary</label>
+                    <input type="number" id="countSalary" name="salary" class="form-control" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

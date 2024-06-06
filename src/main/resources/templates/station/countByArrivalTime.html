@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Count of Routes by Arrival Time</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Count of Routes for Station ID: <span th:text="${id}"></span></h1>
+    <p>Arrival Time: <span th:text="${#temporals.format(arrivalTime, 'dd-MM-yyyy HH:mm')}"></span></p>
+    <a class="btn btn-secondary mb-3" th:href="@{/system/info/station/all}">Back to List</a>
+    <p>Total routes: <span th:text="${routes}"></span></p>
+</div>
+</body>
+</html>

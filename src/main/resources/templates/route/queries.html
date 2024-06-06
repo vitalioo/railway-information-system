@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Route Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Route Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Route Queries</div>
+        <div class="card-body">
+
+            <!-- Query by Canceled Status -->
+            <div class="mb-3">
+                <p>This query retrieves routes by canceled status.</p>
+                <form method="get" th:action="@{/system/info/route/cancel}">
+                    <div class="form-group">
+                        <label for="canceled">Canceled Status</label>
+                        <select id="canceled" name="canceled" class="form-control" required>
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Canceled Status -->
+            <div class="mb-3">
+                <p>This query counts routes by canceled status.</p>
+                <form method="get" th:action="@{/system/info/route/count}">
+                    <div class="form-group">
+                        <label for="countCanceled">Canceled Status</label>
+                        <select id="countCanceled" name="canceled" class="form-control" required>
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Final Destination -->
+            <div class="mb-3">
+                <p>This query retrieves routes by final destination.</p>
+                <form method="get" th:action="@{/system/info/route/destination}">
+                    <div class="form-group">
+                        <label for="finalDestination">Final Destination</label>
+                        <select id="finalDestination" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Final Destination -->
+            <div class="mb-3">
+                <p>This query counts routes by final destination.</p>
+                <form method="get" th:action="@{/system/info/route/count/destination}">
+                    <div class="form-group">
+                        <label for="countFinalDestination">Final Destination</label>
+                        <select id="countFinalDestination" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Initial and Final Destination -->
+            <div class="mb-3">
+                <p>This query retrieves routes by initial and final destination.</p>
+                <form method="get" th:action="@{/system/info/route/initialDestination/finalDestination}">
+                    <div class="form-group">
+                        <label for="initialDestination">Initial Destination</label>
+                        <select id="initialDestination" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="finalDestinationQuery">Final Destination</label>
+                        <select id="finalDestinationQuery" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Initial and Final Destination -->
+            <div class="mb-3">
+                <p>This query counts routes by initial and final destination.</p>
+                <form method="get" th:action="@{/system/info/route/count/initialDestination/finalDestination}">
+                    <div class="form-group">
+                        <label for="countInitialDestination">Initial Destination</label>
+                        <select id="countInitialDestination" name="initialDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Initial Destination</option>
+                            <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="countFinalDestinationQuery">Final Destination</label>
+                        <select id="countFinalDestinationQuery" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by All Reason -->
+            <div class="mb-3">
+                <p>This query retrieves routes by all delay reasons.</p>
+                <form method="get" th:action="@{/system/info/route/reason/all}">
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by All Reason -->
+            <div class="mb-3">
+                <p>This query counts routes by all delay reasons.</p>
+                <form method="get" th:action="@{/system/info/route/count/reason/all}">
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Reason -->
+            <div class="mb-3">
+                <p>This query retrieves routes by delay reason.</p>
+                <form method="get" th:action="@{/system/info/route/reason}">
+                    <div class="form-group">
+                        <label for="reason">Reason</label>
+                        <select id="reason" name="reason" class="form-control" required>
+                            <option value="">Select Reason</option>
+                            <option value="Задержка на 2 часа">Задержка на 2 часа</option>
+                            <option value="Погодные условия">Погодные условия</option>
+                            <option value="Технические неполадки">Технические неполадки</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Reason -->
+            <div class="mb-3">
+                <p>This query counts routes by delay reason.</p>
+                <form method="get" th:action="@{/system/info/route/count/reason}">
+                    <div class="form-group">
+                        <label for="countReason">Reason</label>
+                        <select id="countReason" name="reason" class="form-control" required>
+                            <option value="">Select Reason</option>
+                            <option value="Задержка на 2 часа">Задержка на 2 часа</option>
+                            <option value="Погодные условия">Погодные условия</option>
+                            <option value="Технические неполадки">Технические неполадки</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Route Type and Final Destination -->
+            <div class="mb-3">
+                <p>This query retrieves routes by route type and final destination.</p>
+                <form method="get" th:action="@{/system/info/route/routeType/finalDestination}">
+                    <div class="form-group">
+                        <label for="routeType">Route Type</label>
+                        <select id="routeType" name="routeType" class="form-control" required>
+                            <option value="" disabled selected>Select Route Type</option>
+                            <option th:each="routeType : ${routeTypes}" th:value="${routeType}" th:text="${routeType}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="finalDestinationType">Final Destination</label>
+                        <select id="finalDestinationType" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Count by Route Type and Final Destination -->
+            <div class="mb-3">
+                <p>This query counts routes by route type and final destination.</p>
+                <form method="get" th:action="@{/system/info/route/count/routeType/finalDestination}">
+                    <div class="form-group">
+                        <label for="countRouteType">Route Type</label>
+                        <select id="countRouteType" name="routeType" class="form-control" required>
+                            <option value="" disabled selected>Select Route Type</option>
+                            <option th:each="routeType : ${routeTypes}" th:value="${routeType}" th:text="${routeType}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="countFinalDestinationType">Final Destination</label>
+                        <select id="countFinalDestinationType" name="finalDestination" class="form-control" required>
+                            <option value="" disabled selected>Select Final Destination</option>
+                            <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}"></option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

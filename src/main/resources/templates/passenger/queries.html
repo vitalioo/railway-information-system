@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Passenger Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Passenger Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Passenger Queries</div>
+        <div class="card-body">
+
+            <!-- Find All By Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/route}">
+                <div class="form-group">
+                    <label for="initialDestination">Initial Destination</label>
+                    <select class="form-control" id="initialDestination" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestination">Final Destination</label>
+                    <select class="form-control" id="finalDestination" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count All By Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/count/route}">
+                <div class="form-group">
+                    <label for="initialDestinationCount">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationCount" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationCount">Final Destination</label>
+                    <select class="form-control" id="finalDestinationCount" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find All By Destination and Departure Query -->
+            <form method="get" th:action="@{/system/info/passenger/destination/time}">
+                <div class="form-group">
+                    <label for="initialDestinationTime">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationTime" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationTime">Final Destination</label>
+                    <select class="form-control" id="finalDestinationTime" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="departureTime">Departure Time</label>
+                    <input type="datetime-local" class="form-control" id="departureTime" name="departureTime" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count All By Destination and Departure Query -->
+            <form method="get" th:action="@{/system/info/passenger/count/destination/time}">
+                <div class="form-group">
+                    <label for="initialDestinationCountTime">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationCountTime" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationCountTime">Final Destination</label>
+                    <select class="form-control" id="finalDestinationCountTime" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="departureTimeCount">Departure Time</label>
+                    <input type="datetime-local" class="form-control" id="departureTimeCount" name="departureTime" required>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find All By Baggage and Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/baggage/route}">
+                <div class="form-group">
+                    <label for="baggage">Baggage</label>
+                    <select class="form-control" id="baggage" name="baggage" required>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                    <label for="initialDestinationBaggage">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationBaggage" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationBaggage">Final Destination</label>
+                    <select class="form-control" id="finalDestinationBaggage" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count All By Baggage and Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/count/baggage/route}">
+                <div class="form-group">
+                    <label for="baggageCount">Baggage</label>
+                    <select class="form-control" id="baggageCount" name="baggage" required>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                    <label for="initialDestinationBaggageCount">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationBaggageCount" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationBaggageCount">Final Destination</label>
+                    <select class="form-control" id="finalDestinationBaggageCount" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find All By Gender and Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/gender/route}">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input type="text" class="form-control" id="gender" name="gender" required>
+                    <label for="initialDestinationGender">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationGender" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationGender">Final Destination</label>
+                    <select class="form-control" id="finalDestinationGender" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count All By Gender and Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/count/gender/route}">
+                <div class="form-group">
+                    <label for="genderCount">Gender</label>
+                    <input type="text" class="form-control" id="genderCount" name="gender" required>
+                    <label for="initialDestinationGenderCount">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationGenderCount" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationGenderCount">Final Destination</label>
+                    <select class="form-control" id="finalDestinationGenderCount" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Find All By Age and Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/age/route}">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" required>
+                    <label for="initialDestinationAge">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationAge" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationAge">Final Destination</label>
+                    <select class="form-control" id="finalDestinationAge" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <!-- Count All By Age and Route Query -->
+            <form method="get" th:action="@{/system/info/passenger/count/age/route}">
+                <div class="form-group">
+                    <label for="ageCount">Age</label>
+                    <input type="number" class="form-control" id="ageCount" name="age" required>
+                    <label for="initialDestinationAgeCount">Initial Destination</label>
+                    <select class="form-control" id="initialDestinationAgeCount" name="initialDestination" required>
+                        <option th:each="destination : ${initialDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <label for="finalDestinationAgeCount">Final Destination</label>
+                    <select class="form-control" id="finalDestinationAgeCount" name="finalDestination" required>
+                        <option th:each="destination : ${finalDestinations}" th:value="${destination}" th:text="${destination}">Destination</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </div>
+            </form>
+
+            <a href="/system/info/passenger/all" class="btn btn-dark mt-2">Back</a>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

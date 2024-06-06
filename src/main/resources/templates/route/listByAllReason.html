@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Routes by Delay Reason</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Routes by Delay Reason</h1>
+    <a class="btn btn-secondary mb-3" th:href="@{/system/info/route/all}">Back to List</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Route Type</th>
+            <th>Duration (Seconds)</th>
+            <th>Initial Destination</th>
+            <th>Final Destination</th>
+            <th>Canceled</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="route : ${routes}">
+            <td th:text="${route.routeType}"></td>
+            <td th:text="${route.durationSeconds}"></td>
+            <td th:text="${route.initialDestination}"></td>
+            <td th:text="${route.finalDestination}"></td>
+            <td th:text="${route.canceled} ? 'Yes' : 'No'"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

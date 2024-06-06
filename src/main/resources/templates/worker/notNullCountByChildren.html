@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Worker Count with Children</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Worker Count with Children</h1>
+    <div th:if="${count == 0}">
+        <p>No workers found with children. <a th:href="@{/system/info/worker/all}" class="btn btn-primary">Back to all workers</a></p>
+    </div>
+    <div th:if="${count > 0}">
+        <p>Total Workers: <span th:text="${count}"></span></p>
+    </div>
+</div>
+</body>
+</html>

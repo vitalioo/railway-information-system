@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Station</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Create Station</h1>
+    <form th:action="@{/system/info/station}" th:object="${station}" method="post" class="form">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="region">Region:</label>
+            <input type="text" id="region" th:field="*{region}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="arrivalTime">Arrival Time:</label>
+            <input type="datetime-local" id="arrivalTime" th:field="*{arrivalTime}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="departureTime">Departure Time:</label>
+            <input type="datetime-local" id="departureTime" th:field="*{departureTime}" class="form-control" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <a class="btn btn-secondary" href="/system/info/station/all">Back to List</a>
+</div>
+</body>
+</html>

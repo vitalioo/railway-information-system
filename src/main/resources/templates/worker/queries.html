@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Worker Queries</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="my-4 text-center">Worker Queries</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">Worker Queries</div>
+        <div class="card-body">
+
+            <!-- Query by Railway Station -->
+            <div>
+                <h2>This query retrieves workers by railway station.</h2>
+                <form th:action="@{/system/info/worker/station}" method="get">
+                    <label for="station-select">Railway Station ID</label>
+                    <select id="station-select" name="id" required>
+                        <option value="">Select Station</option>
+                        <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}">
+                            Station
+                        </option>
+                    </select>
+                    <button type="submit">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Department -->
+            <div>
+                <h2>This query retrieves workers by department.</h2>
+                <form th:action="@{/system/info/worker/department/id}" method="get">
+                    <label for="department-select">Department ID</label>
+                    <select id="department-select" name="id" required>
+                        <option value="">Select Department</option>
+                        <option th:each="department : ${departments}" th:value="${department.id}"
+                                th:text="${department.name}">Department
+                        </option>
+                    </select>
+                    <button type="submit">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Work Experience -->
+            <div class="mb-3">
+                <p>This query retrieves workers by work experience.</p>
+                <form method="get" th:action="@{/system/info/worker/experience}">
+                    <div class="form-group">
+                        <label for="experience">Work Experience</label>
+                        <input type="text" id="experience" name="experience" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Gender -->
+            <div class="mb-3">
+                <p>This query retrieves workers by gender.</p>
+                <form method="get" th:action="@{/system/info/worker/gender}">
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <input type="text" id="gender" name="gender" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Age -->
+            <div class="mb-3">
+                <p>This query retrieves workers by age.</p>
+                <form method="get" th:action="@{/system/info/worker/age}">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="text" id="age" name="age" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Children Count -->
+            <div class="mb-3">
+                <p>This query retrieves workers by children count.</p>
+                <form method="get" th:action="@{/system/info/worker/children/count}">
+                    <div class="form-group">
+                        <label for="childrenCount">Children Count</label>
+                        <input type="text" id="childrenCount" name="children" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Salary -->
+            <div class="mb-3">
+                <p>This query retrieves workers by salary.</p>
+                <form method="get" th:action="@{/system/info/worker/salary}">
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input type="text" id="salary" name="salary" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Brigade -->
+            <div>
+                <p>This query retrieves workers by brigade.</p>
+                <form th:action="@{/system/info/worker/brigade}" method="get">
+                    <label for="brigade-select">Brigade ID</label>
+                    <select id="brigade-select" name="id" required>
+                        <option value="">Select Brigade</option>
+                        <option th:each="brigade : ${brigades}" th:value="${brigade.id}" th:text="${brigade.id}">
+                            Brigade
+                        </option>
+                    </select>
+                    <button type="submit">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Brigade and Locomotive -->
+            <p>This query retrieves workers by brigade and locomotive.</p>
+            <form th:action="@{/system/info/worker/brigade/locomotive}" method="get">
+                <label for="brigade-select">Brigade ID</label>
+                <select id="brigade-select" name="id1" required>
+                    <option value="">Select Brigade</option>
+                    <option th:each="brigade : ${brigades}" th:value="${brigade.id}" th:text="${brigade.id}">Brigade
+                    </option>
+                </select>
+                <label for="locomotive-select">Locomotive ID</label>
+                <select id="locomotive-select" name="id2" required>
+                    <option value="">Select Locomotive</option>
+                    <option th:each="locomotive : ${locomotives}" th:value="${locomotive.id}"
+                            th:text="${locomotive.name}">Locomotive
+                    </option>
+                </select>
+                <button type="submit">Execute Query</button>
+            </form>
+
+            <!-- Query by Brigade and Age -->
+            <p>This query retrieves workers by brigade and age.</p>
+            <form method="get" th:action="@{/system/info/worker/brigade/age}">
+                <label for="brigade-select">Brigade ID</label>
+                <select id="brigade-select" name="id" required>
+                    <option value="">Select Brigade</option>
+                    <option th:each="brigade : ${brigades}" th:value="${brigade.id}" th:text="${brigade.id}">
+                        Brigade
+                    </option>
+                </select>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" id="age" name="age" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+            </form>
+
+            <!-- Query by Brigade and Salary -->
+            <div class="mb-3">
+                <p>This query retrieves workers by brigade and salary.</p>
+                <form method="get" th:action="@{/system/info/worker/brigade/salary}">
+                    <label for="brigade-select">Brigade ID</label>
+                    <select id="brigade-select" name="id" required>
+                        <option value="">Select Brigade</option>
+                        <option th:each="brigade : ${brigades}" th:value="${brigade.id}" th:text="${brigade.id}">
+                            Brigade
+                        </option>
+                    </select>
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input type="text" id="salary" name="salary" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query for Workers with Non-null Children Count -->
+            <div class="mb-3">
+                <p>This query retrieves workers with non-null children count.</p>
+                <form method="get" th:action="@{/system/info/worker/children}">
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query for Worker Count with Non-null Children Count -->
+            <div class="mb-3">
+                <p>This query counts workers with non-null children count.</p>
+                <form method="get" th:action="@{/system/info/worker/count/children}">
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+            <!-- Query by Children Count -->
+            <div class="mb-3">
+                <p>This query retrieves workers by children count.</p>
+                <form method="get" th:action="@{/system/info/worker/children/count}">
+                    <div class="form-group">
+                        <label for="childrenCount">Children Count</label>
+                        <input type="text" id="childrenCount" name="children" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-2">Execute Query</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

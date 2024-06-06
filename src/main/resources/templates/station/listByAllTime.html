@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Stations by Arrival and Departure Time</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Stations for ID: <span th:text="${id}"></span></h1>
+    <p>From <span th:text="${#temporals.format(arrivalTime, 'dd-MM-yyyy HH:mm')}"></span> to <span th:text="${#temporals.format(departureTime, 'dd-MM-yyyy HH:mm')}"></span></p>
+    <a class="btn btn-secondary mb-3" th:href="@{/system/info/station/all}">Back to List</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Region</th>
+            <th>Arrival Time</th>
+            <th>Departure Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="route : ${routes}">
+            <td th:text="${route.id}"></td>
+            <td th:text="${route.name}"></td>
+            <td th:text="${route.region}"></td>
+            <td th:text="${#temporals.format(route.arrivalTime, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${#temporals.format(route.departureTime, 'dd-MM-yyyy HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
